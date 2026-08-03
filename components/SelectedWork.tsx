@@ -2,49 +2,53 @@
 
 import Link from "next/link";
 import ProjectCard from "./ProjectCard";
+import SectionHeading from "./SectionHeading";
 import { useScrollReveal } from "@/hooks/useScrollReveal";
 
 const featuredProject = {
-  title: "ERP Backend System",
+  title: "CertWatch",
+  subtitle: "Real-Time Domain Threat Intelligence Platform",
   description:
-    "Architected and deployed a highly scalable Enterprise Resource Planning backend. Engineered a resilient microservices architecture that reduced data retrieval times by 40% and improved concurrent user handling. Integrated real-time synchronization across multiple client nodes.",
-  image:
-    "https://lh3.googleusercontent.com/aida-public/AB6AXuCtIfOkk417tN1gk589FdohsQRP9RAPmwd5GiU7u64ynRRersGR5E0Fpqn522idaybbXRMCDXWk7e2GaJuWrMxqqfpvE9U38gzeN3IFJqeIcDW5OX6nzzeym1MFjOaRmH6_Q5JjYriInyOF0kjjILourFveH3SDMMC1hh5UIoog-QXsef9FzGoS_xkbzY5NAdH9yKjXgKddbflON4sF6LFD3zfAI6pWxLo89JMxdPPOHYHvmlgVwh4V-Q",
-  imageAlt: "ERP Architecture",
-  tags: ["Node.js", "Express.js", "MongoDB", "JWT", "Mongoose"],
-  link: "#",
+    "A live system that ingests every SSL certificate issued anywhere on the internet in real time via Certificate Transparency logs, flags domains impersonating known brands, and scores each one through an explainable risk engine. A tiered similarity-matching engine replaces naive string comparison, cutting false positives to near-zero across 30+ monitored brands including Indian banks and fintechs. Parallel enrichment workers pull DNS, WHOIS, ASN, and content signals without stalling the pipeline — flagging malicious domains in under 30 seconds, the same threat intel registrar trust & safety teams rely on.",
+  image: "https://opengraph.githubassets.com/1/Vikrantsingh22/CertWatch",
+  imageAlt: "CertWatch — Real-Time Domain Threat Intelligence",
+  tags: [
+    "Node.js", "NestJS", "TypeScript", "BullMQ", "Redis",
+    "PostgreSQL", "Kubernetes", "GCP", "Prometheus/Grafana", "Playwright",
+  ],
+  links: [
+    { label: "GitHub", href: "https://github.com/Vikrantsingh22/CertWatch" },
+    { label: "Build thread", href: "https://x.com/Vikrant2287/status/2068043949172998262" },
+  ],
 };
 
 const secondaryProjects = [
   {
-    title: "Crypto-Opinion-Trading-Web3.0",
+    title: "BNBBrawl",
+    subtitle: "Real-Time Esports Wagering on BNB Chain",
     description:
-      "Built a low-latency trading engine simulator handling high-frequency mock order matching. Implemented WebSockets for real-time order book updates and achieved sub-millisecond execution times.",
-    image:
-      "https://lh3.googleusercontent.com/aida-public/AB6AXuAgSPRt9bAw4CGQzMndbJkGqFDdX9ROZn4-gAtAYpxjU3Iar_sb1DXjSprUimHTDkG6A6Omez2HxfbpvKY6H69DpDTsdYv7i0FuE6Bda7X-H96gGjOeUKEckFnvBo1M7zk7rW0TCrDzMJjfWfbMrwKjkz338H91TDoZ1rBYDcPiH92c7ZkxdOYxTCi5_hJ-HodGIh9dSrejUQvEq-L4uiX3boX91JKuwCFsgptVbfqOgVgJOlzzwiQRgw",
-    imageAlt: "Web3 Code Snippet",
-    tags: ["React.js", "Express.js", "web3.js", "Solidity", "Ethereum"],
-    link: "#",
+      "Built in 16 hours during the BNB Chain Hackathon: a live wagering platform for Valorant Champions Tour matches. Connect a wallet, place on-chain bets against real-time odds, and receive instant payouts through a Solidity escrow contract the moment a match ends. Placed 2nd.",
+    image: "https://opengraph.githubassets.com/1/Vikrantsingh22/BNBBrawl",
+    imageAlt: "BNBBrawl — Esports wagering on BNB Chain",
+    tags: ["React.js", "Express.js", "TypeScript", "Solidity", "BNB Smart Chain", "Ethers.js", "Supabase"],
+    links: [
+      { label: "GitHub", href: "https://github.com/Vikrantsingh22/BNBBrawl" },
+      { label: "Demo", href: "https://youtu.be/jvT85thNhts" },
+    ],
   },
   {
-    title: "Dashify",
+    title: "Solana Security Dashboard",
+    subtitle: "On-Chain Exploit & Threat Tracker",
     description:
-      "Data analytics dashboard handling dynamic filtering across large datasets with internet-scale filters including country, region, topics, PESTLE factors, and vector selection.",
-    image:
-      "https://lh3.googleusercontent.com/aida-public/AB6AXuC22WCx8Ciur9LgdawoVhK8L2I2-rRQUqqHymKqISD9e2XeKqFEB9wg_yQMgbSwn9I_g2mjDaJepkWieeH8Tetujt9b7aRs00mLftaIT_cqxY_9YJeCRNf48fMvA3AHd_-77ttxkZEgFj8KHznAqqCo0YmO964eXVYv32nqxuhLytoZbGs_jyQphpecLiRGagPdJlITd3NsmOGogWidzxvPlAI2MO2gkfCEI4Q1eVvcjegv7yq9LSjCVQ",
-    imageAlt: "Dashify UI",
-    tags: ["Node.js", "Express.js", "React.js", "Chart.js", "MongoDB", "shadcn"],
-    link: "#",
-  },
-  {
-    title: "Custom Data-Based Chatbot",
-    description:
-      "AI-powered chatbot implementing secure database operations and transactions, with vector embeddings for intelligent chat responses.",
-    image:
-      "https://lh3.googleusercontent.com/aida-public/AB6AXuD5Bhrr190ES0C6gnfkmXmNp-sc20H-SOpql0t0q-t9TuJ_ZRhBe_3cahoxTykQsdr2uvCYzU08anBTfKHLL7qhiwmXqWXmOZRevTqaJ1UL1_hv4EYpUpQKJxBUXYF0q5t4QPqQobVvrq_PN5_7M_bbHXcvGsWAKc-E_gg-5KDiDpWX9Dsmo3W5US0oImhv3AjKChiwxo4CwlIBdL3kyLauq-X9O7GIm5Mph5G9oJoD5TUOxa99iJZqbQ",
-    imageAlt: "AI Chatbot",
-    tags: ["Next.js", "MongoDB", "Prisma", "OpenAI", "Clerk Auth"],
-    link: "#",
+      "A live dashboard tracking Solana exploits and failed transactions in real time, combining Dune Analytics queries with a Puppeteer-scraped historical exploit database. Surfaces fund-loss analytics, exploit timelines, high-frequency-signer detection, and a filterable resource library for security researchers.",
+    image: "https://opengraph.githubassets.com/1/Vikrantsingh22/solisburning",
+    imageAlt: "Solana Security Dashboard",
+    tags: ["Next.js", "TypeScript", "Puppeteer", "Docker", "Dune Analytics API", "Supabase/PostgreSQL"],
+    links: [
+      { label: "GitHub", href: "https://github.com/Vikrantsingh22/solisburning" },
+      { label: "Live dashboard", href: "https://solanasecurity-dashboard-by-vikrant.vercel.app/dashboard" },
+      { label: "Demo", href: "https://youtu.be/bmHkz2OOkTo" },
+    ],
   },
 ];
 
@@ -57,28 +61,13 @@ export default function SelectedWork() {
       id="work"
       className="section-pad mb-32"
     >
-      {/* Section heading */}
-      <h2
-        className="uppercase tracking-widest mb-12 flex items-center gap-4 text-[12px]"
-        style={{
-          fontFamily: "var(--font-geist-mono)",
-          fontWeight: 500,
-          letterSpacing: "0.05em",
-          color: "var(--color-primary)",
-        }}
-      >
-        <span
-          className="w-8 h-px"
-          style={{ backgroundColor: "var(--color-primary)" }}
-        />
-        Selected Work
-      </h2>
+      <SectionHeading sectionId="work" label="Selected Work" />
 
       <div className="flex flex-col gap-8">
         {/* Featured project */}
         <ProjectCard {...featuredProject} featured />
 
-        {/* Secondary projects grid */}
+        {/* 2-up grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           {secondaryProjects.map((project) => (
             <ProjectCard key={project.title} {...project} />
@@ -86,9 +75,11 @@ export default function SelectedWork() {
         </div>
 
         {/* GitHub link */}
-        <div className="mt-8 text-center md:text-left">
+        <div className="mt-4 text-center md:text-left">
           <Link
-            href="#"
+            href="https://github.com/Vikrantsingh22"
+            target="_blank"
+            rel="noopener noreferrer"
             className="inline-flex items-center gap-2 uppercase text-[12px] transition-colors duration-200"
             style={{
               fontFamily: "var(--font-geist-mono)",

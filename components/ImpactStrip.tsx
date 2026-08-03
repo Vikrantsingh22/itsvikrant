@@ -1,8 +1,8 @@
 const metrics = [
-  { value: "50,000+", label: "Requests/mo handled" },
-  { value: "37%",     label: "Engagement lift" },
-  { value: "$300",    label: "Saved/month API costs" },
-  { value: "99.999%", label: "Uptime achieved" },
+  { value: "30M+",  label: "Domain records migrated — highest in company history" },
+  { value: "3x",    label: "Operational cost reduction across 11 TLDs" },
+  { value: "50,000+", label: "Daily requests at sub-200ms latency" },
+  { value: "90%",   label: "Manual QA effort eliminated via automated testing" },
 ];
 
 export default function ImpactStrip() {

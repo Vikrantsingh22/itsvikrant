@@ -3,10 +3,10 @@
 import Link from "next/link";
 
 const footerLinks = [
-  { href: "#", label: "Email" },
-  { href: "#", label: "LinkedIn" },
-  { href: "#", label: "GitHub" },
-  { href: "#", label: "Source" },
+  { href: "mailto:vikrantsingh202004@gmail.com", label: "Email" },
+  { href: "https://linkedin.com/in/vikrant-singh-196301210", label: "LinkedIn", external: true },
+  { href: "https://github.com/Vikrantsingh22", label: "GitHub", external: true },
+  { href: "https://itsvikrant.tech", label: "Site", external: true },
 ];
 
 export default function Footer() {
@@ -36,7 +36,7 @@ export default function Footer() {
 
       {/* Get in touch CTA */}
       <Link
-        href="#"
+        href="mailto:vikrantsingh202004@gmail.com"
         className="inline-flex items-center justify-center uppercase tracking-wider text-lg transition-colors duration-200 px-8 py-5"
         style={{
           fontFamily: "var(--font-geist-mono)",
@@ -83,6 +83,8 @@ export default function Footer() {
             <li key={link.label}>
               <Link
                 href={link.href}
+                target={link.external ? "_blank" : undefined}
+                rel={link.external ? "noopener noreferrer" : undefined}
                 className="uppercase text-[12px] transition-colors duration-200"
                 style={{
                   fontFamily: "var(--font-geist-mono)",
@@ -115,7 +117,7 @@ export default function Footer() {
             color: "var(--color-text-tertiary)",
           }}
         >
-          © 2024 VIKRANT SINGH. ENGINEERED FOR PERFORMANCE.
+          © 2026 VIKRANT SINGH. ENGINEERED FOR PERFORMANCE.
         </div>
       </div>
     </footer>

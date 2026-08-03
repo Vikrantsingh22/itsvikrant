@@ -1,13 +1,16 @@
 "use client";
 
+import Image from "next/image";
+
 export interface ExperienceEntryProps {
   title: string;
   company: string;
-  companyLogo: string;
-  companyLogoAlt: string;
+  companyLogo?: string;
+  companyLogoAlt?: string;
   dateRange: string;
   bullets: string[];
   moreDetails?: string[];
+  note?: string;
   isActive?: boolean;
 }
 
@@ -19,6 +22,7 @@ export default function ExperienceEntry({
   dateRange,
   bullets,
   moreDetails,
+  note,
   isActive = false,
 }: ExperienceEntryProps) {
   return (
@@ -50,7 +54,7 @@ export default function ExperienceEntry({
             {title}
           </h3>
           <div
-            className="mt-1"
+            className="mt-1 flex items-center gap-2"
             style={{
               fontFamily: "var(--font-geist-mono)",
               fontSize: "14px",
@@ -60,18 +64,21 @@ export default function ExperienceEntry({
                 : "var(--color-text-secondary)",
             }}
           >
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img
-              src={companyLogo}
-              alt={companyLogoAlt}
-              className="inline-block w-6 h-6 mr-2 object-contain align-middle"
-            />
+            {companyLogo && (
+              <Image
+                src={companyLogo}
+                alt={companyLogoAlt ?? company}
+                width={24}
+                height={24}
+                className="object-contain shrink-0"
+              />
+            )}
             {company}
           </div>
         </div>
 
         <div
-          className="uppercase text-[12px] tracking-widest"
+          className="uppercase text-[12px] tracking-widest shrink-0"
           style={{
             fontFamily: "var(--font-geist-mono)",
             fontWeight: 500,
@@ -85,11 +92,11 @@ export default function ExperienceEntry({
 
       {/* Main bullets */}
       <ul
-        className="list-disc list-inside space-y-2 mb-4"
+        className="list-disc list-outside ml-4 space-y-2 mb-4"
         style={{
           fontFamily: "var(--font-geist-sans)",
-          fontSize: "16px",
-          lineHeight: 1.6,
+          fontSize: "15px",
+          lineHeight: 1.7,
           color: "var(--color-text-secondary)",
         }}
       >
@@ -97,6 +104,21 @@ export default function ExperienceEntry({
           <li key={b}>{b}</li>
         ))}
       </ul>
+
+      {/* Promotion / note */}
+      {note && (
+        <p
+          className="mb-4 italic"
+          style={{
+            fontFamily: "var(--font-geist-sans)",
+            fontSize: "14px",
+            lineHeight: 1.6,
+            color: "var(--color-text-tertiary)",
+          }}
+        >
+          {note}
+        </p>
+      )}
 
       {/* Expandable more details */}
       {moreDetails && moreDetails.length > 0 && (
@@ -128,11 +150,11 @@ export default function ExperienceEntry({
             style={{ borderColor: "var(--color-border-hairline)" }}
           >
             <ul
-              className="list-disc list-inside space-y-2"
+              className="list-disc list-outside ml-4 space-y-2"
               style={{
                 fontFamily: "var(--font-geist-sans)",
-                fontSize: "16px",
-                lineHeight: 1.6,
+                fontSize: "15px",
+                lineHeight: 1.7,
                 color: "var(--color-text-secondary)",
               }}
             >

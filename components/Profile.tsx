@@ -1,15 +1,15 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
+import SectionHeading from "./SectionHeading";
 import { useScrollReveal } from "@/hooks/useScrollReveal";
 
-const PROFILE_IMG =
-  "https://lh3.googleusercontent.com/aida/AP1WRLtoNcNMFN0v_vZshe6JS-lxTnkK1MoG7ZisrKPSNmRd3IZpyR_mpXgdG8q_3wh4mWG6JtHFCOVVv2DlPc_ICsz0hyLRut2fLe3NgrgxKau9nmIjYEjRmoDYrv3bzhfvCKDWoUyr2zK5Vgbc9pTdtwiePls3fAZ61bb-vwPZSugFMeTxqfPvJhk2LIbgYKtRY0l11JUplEC5dE0yg9CBlXUYscF6U5uPbMAUbwTVC50SGfo3b1BPQQU2uRSn";
-
 const socialLinks = [
-  { href: "#", label: "Email",    icon: "mail" },
-  { href: "#", label: "LinkedIn", icon: "link" },
-  { href: "#", label: "GitHub",   icon: "code" },
+  { href: "mailto:vikrantsingh202004@gmail.com", label: "Email",    icon: "mail" },
+  { href: "https://linkedin.com/in/vikrant-singh-196301210", label: "LinkedIn", icon: "link" },
+  { href: "https://github.com/Vikrantsingh22", label: "GitHub",   icon: "code" },
+  { href: "https://itsvikrant.tech",            label: "Website",  icon: "language" },
 ];
 
 export default function Profile() {
@@ -22,22 +22,7 @@ export default function Profile() {
       className="section-pad mb-32 border-t pt-24"
       style={{ borderColor: "var(--color-border-hairline)" }}
     >
-      {/* Section heading */}
-      <h2
-        className="uppercase tracking-widest mb-12 flex items-center gap-4 text-[12px]"
-        style={{
-          fontFamily: "var(--font-geist-mono)",
-          fontWeight: 500,
-          letterSpacing: "0.05em",
-          color: "var(--color-primary)",
-        }}
-      >
-        <span
-          className="w-8 h-px"
-          style={{ backgroundColor: "var(--color-primary)" }}
-        />
-        Profile
-      </h2>
+      <SectionHeading sectionId="profile" label="Profile" />
 
       {/* Profile card */}
       <div
@@ -47,25 +32,53 @@ export default function Profile() {
           borderColor: "var(--color-border-hairline)",
         }}
       >
-        {/* Avatar + social links */}
-        <div className="w-full md:w-[180px] flex flex-col gap-6 shrink-0 items-center md:items-start">
+        {/* Avatar */}
+        <div className="shrink-0">
           <div
-            className="w-[180px] h-[180px] border rounded-lg overflow-hidden"
-            style={{ borderColor: "var(--color-border-hairline)" }}
+            className="border rounded-lg overflow-hidden"
+            style={{
+              width: "220px",
+              height: "220px",
+              borderColor: "var(--color-border-hairline)",
+            }}
           >
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img
-              src={PROFILE_IMG}
+            <Image
+              src="/images/profile.png"
               alt="Vikrant Singh"
-              className="w-full h-full object-cover"
+              width={220}
+              height={220}
+              className="object-cover w-full h-full"
+              priority
             />
           </div>
+        </div>
 
-          <div className="flex flex-wrap justify-center md:justify-start gap-4 w-full">
+        {/* Bio + socials */}
+        <div className="flex-1 flex flex-col gap-6">
+          <p
+            className="leading-relaxed max-w-[600px]"
+            style={{
+              fontFamily: "var(--font-geist-sans)",
+              fontSize: "16px",
+              fontWeight: 400,
+              lineHeight: 1.7,
+              color: "var(--color-text-secondary)",
+            }}
+          >
+            Backend engineer specializing in high-throughput, real-time systems
+            — from migrating 30M+ domain records to building fraud-detection
+            and Web3 settlement pipelines processing tens of thousands of
+            requests a day.
+          </p>
+
+          {/* Social links — horizontal row */}
+          <div className="flex flex-wrap items-center gap-6">
             {socialLinks.map((s) => (
               <Link
                 key={s.label}
                 href={s.href}
+                target={s.href.startsWith("mailto") ? undefined : "_blank"}
+                rel={s.href.startsWith("mailto") ? undefined : "noopener noreferrer"}
                 className="flex items-center gap-2 uppercase text-[12px] transition-colors duration-200"
                 style={{
                   fontFamily: "var(--font-geist-mono)",
@@ -89,24 +102,6 @@ export default function Profile() {
               </Link>
             ))}
           </div>
-        </div>
-
-        {/* Bio */}
-        <div className="flex-1 md:pl-8">
-          <p
-            className="leading-relaxed max-w-[600px]"
-            style={{
-              fontFamily: "var(--font-geist-sans)",
-              fontSize: "16px",
-              fontWeight: 400,
-              lineHeight: 1.6,
-              color: "var(--color-text-secondary)",
-            }}
-          >
-            Computer Engineering student and backend developer specializing in
-            scalable, low-latency systems. Passionate about building robust
-            infrastructure that powers seamless user experiences at scale.
-          </p>
         </div>
       </div>
 
@@ -134,7 +129,7 @@ export default function Profile() {
             color: "var(--color-text-secondary)",
           }}
         >
-          B.E. Computer Engineering, University of Mumbai · 2022–2026 · CGPA 9.67
+          B.E. Computer Engineering, Thakur College of Engineering &amp; Technology, Mumbai · Graduated 2026 · CGPA 9.67/10
         </div>
       </div>
     </section>

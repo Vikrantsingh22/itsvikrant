@@ -2,22 +2,20 @@
 
 export interface RecognitionItemProps {
   name: string;
-  logo: string;
-  logoAlt: string;
   placement: string;
   year: string;
+  note?: string;
 }
 
 export default function RecognitionItem({
   name,
-  logo,
-  logoAlt,
   placement,
   year,
+  note,
 }: RecognitionItemProps) {
   return (
     <div
-      className="py-6 border-b flex flex-col md:flex-row justify-between md:items-center gap-2 group px-2 transition-colors duration-200"
+      className="py-6 border-b flex flex-col md:flex-row justify-between md:items-center gap-2 px-2 transition-colors duration-200"
       style={{ borderColor: "var(--color-border-hairline)" }}
       onMouseEnter={(e) =>
         ((e.currentTarget as HTMLElement).style.backgroundColor =
@@ -27,9 +25,7 @@ export default function RecognitionItem({
         ((e.currentTarget as HTMLElement).style.backgroundColor = "transparent")
       }
     >
-      <div className="flex items-center gap-4">
-        {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img src={logo} alt={logoAlt} className="w-6 h-6 object-contain" />
+      <div className="flex flex-col gap-1">
         <span
           style={{
             fontFamily: "var(--font-geist-sans)",
@@ -42,6 +38,18 @@ export default function RecognitionItem({
         >
           {name}
         </span>
+        {note && (
+          <span
+            style={{
+              fontFamily: "var(--font-geist-sans)",
+              fontSize: "13px",
+              lineHeight: 1.5,
+              color: "var(--color-text-tertiary)",
+            }}
+          >
+            {note}
+          </span>
+        )}
       </div>
 
       <div
@@ -52,7 +60,7 @@ export default function RecognitionItem({
           letterSpacing: "0.05em",
         }}
       >
-        <span style={{ color: "var(--color-text-secondary)" }}>{placement}</span>
+        <span style={{ color: "var(--color-primary)" }}>{placement}</span>
         <span
           className="w-1 h-1 rounded-full"
           style={{ backgroundColor: "var(--color-border-hairline)" }}

@@ -1,32 +1,45 @@
 "use client";
 
 import SkillCategory from "./SkillCategory";
+import SectionHeading from "./SectionHeading";
 import { useScrollReveal } from "@/hooks/useScrollReveal";
 
 const categories = [
   {
     label: "LANGUAGES",
-    skills: ["Python", "Java", "C", "C++", "Solidity", "JavaScript"],
-    overflow: ["TypeScript"],
-    overflowLabel: "+1 more",
+    skills: ["Java", "TypeScript", "JavaScript", "Go", "Python"],
+    overflow: ["C", "C++", "SQL", "Solidity"],
+    overflowLabel: "+4 more",
   },
   {
-    label: "FRAMEWORKS & INFRA",
-    skills: ["React.js", "Node.js", "Express.js", "mongoose", "Prisma", "GCP"],
-    overflow: [
-      "Next.js",
-      "GraphQL",
-      "REST APIs",
-      "NestJS",
-      "RabbitMQ",
-      "Docker",
-      "Smart Contracts",
-    ],
-    overflowLabel: "+7 more",
+    label: "BACKEND & APIS",
+    skills: ["Spring Boot", "Node.js", "NestJS", "Express.js", "REST APIs"],
+    overflow: ["GraphQL", "WebSockets", "Microservices"],
+    overflowLabel: "+3 more",
   },
   {
-    label: "DATA",
-    skills: ["MongoDB", "PostgreSQL", "Firebase", "MySQL"],
+    label: "CLOUD & DEVOPS",
+    skills: ["GCP", "Kubernetes", "Docker", "Helm"],
+    overflow: ["Argo", "GitHub Actions", "GitLab CI"],
+    overflowLabel: "+3 more",
+  },
+  {
+    label: "DATABASES & MESSAGING",
+    skills: ["PostgreSQL", "MongoDB", "Redis", "BullMQ", "Kafka"],
+    overflow: ["MySQL", "PineconeDB", "Firebase", "PGVector", "RabbitMQ"],
+    overflowLabel: "+5 more",
+  },
+  {
+    label: "GENAI & ML",
+    skills: ["LangChain", "RAG Pipelines", "OpenAI GPT APIs"],
+    overflow: ["Vector Embeddings", "Prompt Engineering", "LLM Fine-tuning"],
+    overflowLabel: "+3 more",
+  },
+  {
+    label: "OBSERVABILITY & TESTING",
+    skills: ["Prometheus", "Grafana", "Jest", "JUnit"],
+    overflow: ["End-to-End Testing", "Automated Test Pipelines"],
+    overflowLabel: "+2 more",
   },
 ];
 
@@ -39,24 +52,9 @@ export default function Skills() {
       id="skills"
       className="section-pad mb-32"
     >
-      {/* Section heading */}
-      <h2
-        className="uppercase tracking-widest mb-12 flex items-center gap-4 text-[12px]"
-        style={{
-          fontFamily: "var(--font-geist-mono)",
-          fontWeight: 500,
-          letterSpacing: "0.05em",
-          color: "var(--color-primary)",
-        }}
-      >
-        <span
-          className="w-8 h-px"
-          style={{ backgroundColor: "var(--color-primary)" }}
-        />
-        Skills
-      </h2>
+      <SectionHeading sectionId="skills" label="Skills" />
 
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12">
         {categories.map((cat) => (
           <SkillCategory key={cat.label} {...cat} />
         ))}

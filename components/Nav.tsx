@@ -2,21 +2,22 @@
 
 import Link from "next/link";
 import { useEffect, useState } from "react";
+import { ActiveSectionContext } from "@/context/ActiveSectionContext";
 
 const navLinks = [
-  { href: "#home", label: "Home" },
-  { href: "#work", label: "Work" },
-  { href: "#experience", label: "Experience" },
-  { href: "#profile", label: "Profile" },
+  { href: "#home",        label: "Home" },
+  { href: "#work",        label: "Work" },
+  { href: "#experience",  label: "Experience" },
+  { href: "#profile",     label: "Profile" },
   { href: "#recognition", label: "Recognition" },
-  { href: "#contact", label: "Contact" },
+  { href: "#contact",     label: "Contact" },
 ];
 
 export default function Nav() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState("home");
 
-  // Track active section via IntersectionObserver
+  // Track active section via IntersectionObserver — single source of truth
   useEffect(() => {
     const sectionIds = navLinks.map((l) => l.href.replace("#", ""));
     const observers: IntersectionObserver[] = [];
@@ -46,7 +47,8 @@ export default function Nav() {
   const closeMenu = () => setMenuOpen(false);
 
   return (
-    <>
+    // Provide active section to the entire component tree
+    <ActiveSectionContext.Provider value={activeSection}>
       <nav
         className="fixed top-0 w-full z-50 border-b"
         style={{
@@ -60,7 +62,7 @@ export default function Nav() {
           {/* Logo */}
           <Link
             href="#home"
-            className="font-bold tracking-tighter uppercase text-sm"
+            className="font-bold tracking-tighter uppercase"
             style={{
               fontFamily: "var(--font-geist-sans)",
               color: "var(--color-text-primary)",
@@ -133,14 +135,11 @@ export default function Nav() {
             aria-label={menuOpen ? "Close menu" : "Open menu"}
             onClick={() => setMenuOpen((v) => !v)}
           >
-            {/* Animated 3-line → X */}
             <span
               className="block w-6 h-px transition-all duration-300 origin-center"
               style={{
                 backgroundColor: "var(--color-text-primary)",
-                transform: menuOpen
-                  ? "translateY(6px) rotate(45deg)"
-                  : "none",
+                transform: menuOpen ? "translateY(6px) rotate(45deg)" : "none",
               }}
             />
             <span
@@ -154,9 +153,7 @@ export default function Nav() {
               className="block w-6 h-px transition-all duration-300 origin-center"
               style={{
                 backgroundColor: "var(--color-text-primary)",
-                transform: menuOpen
-                  ? "translateY(-6px) rotate(-45deg)"
-                  : "none",
+                transform: menuOpen ? "translateY(-6px) rotate(-45deg)" : "none",
               }}
             />
           </button>
@@ -186,7 +183,6 @@ export default function Nav() {
           transition: "transform 0.35s cubic-bezier(0.4, 0, 0.2, 1)",
         }}
       >
-        {/* Close button */}
         <button
           className="absolute top-5 right-5 w-10 h-10 flex items-center justify-center"
           style={{ color: "var(--color-text-secondary)" }}
@@ -196,7 +192,6 @@ export default function Nav() {
           <span className="material-symbols-outlined">close</span>
         </button>
 
-        {/* VS. logo inside drawer */}
         <div
           className="mb-12 uppercase font-bold"
           style={{
@@ -209,7 +204,6 @@ export default function Nav() {
           VS.
         </div>
 
-        {/* Nav links */}
         <ul className="flex flex-col gap-6 flex-grow">
           {navLinks.map((link, i) => {
             const id = link.href.replace("#", "");
@@ -236,7 +230,6 @@ export default function Nav() {
           })}
         </ul>
 
-        {/* Resume CTA inside drawer */}
         <Link
           href="#"
           onClick={closeMenu}
@@ -251,6 +244,6 @@ export default function Nav() {
           RESUME ↓
         </Link>
       </div>
-    </>
+    </ActiveSectionContext.Provider>
   );
 }

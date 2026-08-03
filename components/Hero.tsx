@@ -1,8 +1,18 @@
 "use client";
 
 import Link from "next/link";
+import { useEffect, useState } from "react";
 
 export default function Hero() {
+  // One-time draw-in: starts false, sets to true after first mount
+  const [underlineReady, setUnderlineReady] = useState(false);
+
+  useEffect(() => {
+    // Tiny delay so the transition actually plays (won't run during SSR)
+    const t = setTimeout(() => setUnderlineReady(true), 100);
+    return () => clearTimeout(t);
+  }, []);
+
   return (
     <section
       id="home"
@@ -33,9 +43,9 @@ export default function Hero() {
           </span>
         </div>
 
-        {/* Headline */}
+        {/* Headline with full-width animated underline */}
         <h1
-          className="mb-6"
+          className="mb-6 inline-block"
           style={{
             fontFamily: "var(--font-geist-sans)",
             fontSize: "clamp(40px, 7vw, 64px)",
@@ -45,9 +55,18 @@ export default function Hero() {
             color: "var(--color-text-primary)",
           }}
         >
-          Vikrant{" "}
-          <span style={{ borderBottom: "2px solid var(--color-primary)", paddingBottom: "2px" }}>
-            Singh
+          <span className="block relative pb-2">
+            Vikrant Singh
+            {/* Draw-in underline: width 0 → 100% on first load */}
+            <span
+              aria-hidden="true"
+              className="absolute bottom-0 left-0 h-[2px]"
+              style={{
+                backgroundColor: "var(--color-primary)",
+                width: underlineReady ? "100%" : "0%",
+                transition: "width 0.7s cubic-bezier(0.4, 0, 0.2, 1)",
+              }}
+            />
           </span>
         </h1>
 
@@ -56,16 +75,16 @@ export default function Hero() {
           className="mb-10"
           style={{
             fontFamily: "var(--font-geist-sans)",
-            fontSize: "clamp(20px, 3vw, 32px)",
+            fontSize: "clamp(18px, 2.5vw, 28px)",
             fontWeight: 400,
             lineHeight: 1.4,
             color: "var(--color-text-secondary)",
           }}
         >
           <p className="inline">
-            Backend engineer building low-latency, high-throughput systems —
-            from real-time trading infra to fintech APIs handling 50,000+
-            requests a day.
+            Backend engineer building real-time systems at scale — from
+            migrating 30M+ domain records to engineering fraud-detection
+            pipelines that flag threats in under 30 seconds.
           </p>
           <span
             className="inline-block align-middle ml-1 animate-cursor-blink"
@@ -91,12 +110,12 @@ export default function Hero() {
             className="w-px h-4"
             style={{ backgroundColor: "var(--color-border-hairline)" }}
           />
-          <span>50K+ req/day systems shipped</span>
+          <span>30M+ records migrated</span>
           <span
             className="w-px h-4"
             style={{ backgroundColor: "var(--color-border-hairline)" }}
           />
-          <span>7 hackathon podiums</span>
+          <span>5 hackathon podiums</span>
         </div>
 
         {/* CTAs */}

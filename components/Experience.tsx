@@ -1,39 +1,48 @@
 "use client";
 
+import { useState } from "react";
 import ExperienceEntry from "./ExperienceEntry";
+import SectionHeading from "./SectionHeading";
 import { useScrollReveal } from "@/hooks/useScrollReveal";
 
-const LOGO_CATOFF =
-  "https://lh3.googleusercontent.com/aida/AP1WRLsRNaTEbFp0Xwyyhj_-9_uemskYcdn1NDcmNrROi_OPIX_wKRK43ib-QOJgj2-hhxnpYhD1CvnEARFK1QhyMpZnf6jZq_NV95QMBu-lrvWWPfImfhGZEN5IJ8eknIpxo9t9uCHa3bn79Szttt30d-aPaCR9B6ZFn14uKos1-pIR31Kh5w0b4Zd2UEZ5VMEDlA3U4_kFF56s3ZLUNW2udijmSOb1CC8TNeEM1_hWWC8kk1cssk_81qyrG0U";
-
-const experiences = [
+const mainExperiences = [
   {
-    title: "Software Engineer Intern",
-    company: "@ CatOff Gaming",
-    companyLogo: LOGO_CATOFF,
-    companyLogoAlt: "CatOff Logo",
-    dateRange: "Jun 2023 - Present",
+    title: "SDE Intern → Senior Associate SDE",
+    company: "@ Radix, Mumbai",
+    dateRange: "Jan 2026 – Present",
     bullets: [
-      "Saved $300/week in API costs by optimizing external service calls and implementing caching layers.",
-      "Engineered core backend services reliably handling 50k+ requests daily with 99.99% uptime.",
-      "Led the migration of legacy monolithic endpoints to a scalable microservices architecture.",
+      "Reduced operational costs 3x across 11 TLDs (.online, .tech, .store, .fun, .host, .space, .press, .pw, .site, .uno, .website) by architecting internal automation in Python and Node.js that replaced 3 external third-party services covering domain governance, abuse-handling, and registrar operations.",
+      "Eliminated the Business Intelligence team's dependency on external SERP tooling by building an in-house analysis platform with multi-step retrieval workflows, automating registrar data extraction across all 11 TLDs.",
+      "Cut manual intervention time 60% by engineering scalable concurrent job-processing pipelines for trust & safety workflows across 11 production TLDs.",
+      "Enhanced monitoring with Prometheus and Grafana across registry platforms serving 11 TLDs, enabling anomaly detection before customer impact.",
+      "Contributed to migrating 30M+ domain records between registry backends — the largest such migration in company history.",
     ],
-    moreDetails: [
-      "Collaborated with a cross-functional team on backend architecture.",
-      "Integrated Apple Health, Google Fit, and Strava APIs, driving a 37% engagement increase.",
-      "Built a custom helpdesk ticketing system migration from OS Ticket to GSuite, cutting cost by 78% versus the previous commercial service.",
-    ],
+    note: "Promoted from Intern to Senior Associate SDE in Jul 2026.",
     isActive: true,
   },
   {
     title: "Backend Developer Intern",
-    company: "@ TCET Open Source, Mumbai, Maharashtra",
-    companyLogo: LOGO_CATOFF,
-    companyLogoAlt: "TCET Logo",
-    dateRange: "Jun 2023 - Jan 2024",
+    company: "@ PayRam — Self-Hosted Stablecoin Payments, Remote",
+    dateRange: "Oct 2025 – Feb 2026",
     bullets: [
-      "Designed scalable ERP solutions supporting 5,000+ users.",
-      "Containerized microservices with Docker for consistent environment-agnostic deployment.",
+      "Shipped 2 core production features for a multi-chain payment server, owning the full lifecycle from system design through deployment and debugging.",
+      "Cut manual QA effort 90% and improved bug-detection speed 5x by engineering 26 automated end-to-end test cases covering payment workflows and smart contract deployments via GitHub Actions CI/CD.",
+      "Contributed to automated settlement workflows and wallet infrastructure spanning 4 blockchain networks (Ethereum, Base, Bitcoin, Tron) with sub-second settlement targets.",
+    ],
+    isActive: false,
+  },
+];
+
+const moreExperiences = [
+  {
+    title: "Backend Developer Intern",
+    company: "@ CATOFF Gaming LLC, Bangalore",
+    dateRange: "Jun 2024 – Oct 2025",
+    bullets: [
+      "Drove real-time game-state sync for 3,000+ concurrent users via REST and webhook connectors in NestJS, integrating the Riot Games SDK and social media APIs.",
+      "Improved data ingestion throughput 45% by engineering async job queues with BullMQ and Redis, processing 50,000+ daily requests without queue saturation.",
+      "Designed a RAG pipeline (LangChain, PGVector, OpenAI GPT) cutting game-stats analysis time 80%, delivering predictive pre-match insights from unstructured game data.",
+      "Achieved sub-200ms API latency at 50,000+ daily requests via containerized NestJS microservices on GCP Kubernetes with horizontal pod autoscaling; cut downtime incidents 40% with Prometheus/Grafana observability.",
     ],
     isActive: false,
   },
@@ -41,6 +50,7 @@ const experiences = [
 
 export default function Experience() {
   const ref = useScrollReveal<HTMLElement>();
+  const [showMore, setShowMore] = useState(false);
 
   return (
     <section
@@ -48,75 +58,59 @@ export default function Experience() {
       id="experience"
       className="section-pad mb-32"
     >
-      {/* Section heading */}
-      <h2
-        className="uppercase tracking-widest mb-12 flex items-center gap-4 text-[12px]"
-        style={{
-          fontFamily: "var(--font-geist-mono)",
-          fontWeight: 500,
-          letterSpacing: "0.05em",
-          color: "var(--color-primary)",
-        }}
-      >
-        <span
-          className="w-8 h-px"
-          style={{ backgroundColor: "var(--color-primary)" }}
-        />
-        Experience
-      </h2>
+      <SectionHeading sectionId="experience" label="Experience" />
 
       {/* Timeline */}
       <div
         className="relative pl-6 md:pl-8 border-l space-y-16"
         style={{ borderColor: "var(--color-border-hairline)" }}
       >
-        {experiences.map((exp) => (
+        {mainExperiences.map((exp) => (
           <ExperienceEntry key={exp.title} {...exp} />
         ))}
+
+        {/* Expandable older experience */}
+        {showMore &&
+          moreExperiences.map((exp) => (
+            <ExperienceEntry key={exp.title} {...exp} />
+          ))}
       </div>
 
-      {/* "More Experience" expandable */}
+      {/* Toggle button */}
       <div className="mt-12">
-        <details className="group cursor-pointer outline-none">
-          <summary
-            className="list-none inline-flex items-center gap-2 uppercase text-[12px] transition-colors duration-200"
-            style={{
-              fontFamily: "var(--font-geist-mono)",
-              fontWeight: 500,
-              letterSpacing: "0.05em",
-              color: "var(--color-text-tertiary)",
-            }}
-            onMouseEnter={(e) =>
-              ((e.currentTarget as HTMLElement).style.color =
-                "var(--color-primary)")
-            }
-            onMouseLeave={(e) =>
-              ((e.currentTarget as HTMLElement).style.color =
-                "var(--color-text-tertiary)")
-            }
-          >
-            <span className="material-symbols-outlined text-[16px] group-open:hidden">
-              add
-            </span>
-            <span className="material-symbols-outlined text-[16px] hidden group-open:inline-block">
-              remove
-            </span>
-            <span className="group-open:hidden">More Experience</span>
-            <span className="hidden group-open:inline-block">Show less</span>
-          </summary>
-          <div
-            className="mt-4 pl-4 border-l text-sm italic"
-            style={{
-              borderColor: "var(--color-border-hairline)",
-              fontFamily: "var(--font-geist-sans)",
-              fontSize: "14px",
-              lineHeight: 1.6,
-              color: "var(--color-text-secondary)",
-            }}
-          >
-            Additional project and internship details available upon request.
-          </div>
-        </details>
+        <button
+          onClick={() => setShowMore((v) => !v)}
+          className="inline-flex items-center gap-2 uppercase text-[12px] transition-colors duration-200 cursor-pointer"
+          style={{
+            fontFamily: "var(--font-geist-mono)",
+            fontWeight: 500,
+            letterSpacing: "0.05em",
+            color: "var(--color-text-tertiary)",
+            background: "none",
+            border: "none",
+            padding: 0,
+          }}
+          onMouseEnter={(e) =>
+            ((e.currentTarget as HTMLElement).style.color =
+              "var(--color-primary)")
+          }
+          onMouseLeave={(e) =>
+            ((e.currentTarget as HTMLElement).style.color =
+              "var(--color-text-tertiary)")
+          }
+        >
+          {showMore ? (
+            <>
+              <span className="material-symbols-outlined text-[16px]">remove</span>
+              Show less
+            </>
+          ) : (
+            <>
+              <span className="material-symbols-outlined text-[16px]">add</span>
+              More Experience
+            </>
+          )}
+        </button>
       </div>
     </section>
   );
