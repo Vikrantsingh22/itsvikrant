@@ -1,26 +1,222 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
+/* ─── Design Tokens (Tailwind v4 CSS-first config) ─────────────────────────── */
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  /* Fonts */
+  --font-geist: var(--font-geist-sans);
+  --font-jetbrains: var(--font-geist-mono);
+
+  /* Font families mapped to semantic names used in HTML */
+  --font-display-lg: var(--font-geist-sans);
+  --font-headline-lg: var(--font-geist-sans);
+  --font-headline-lg-mobile: var(--font-geist-sans);
+  --font-body-md: var(--font-geist-sans);
+  --font-mono-label: var(--font-geist-mono);
+  --font-mono-data: var(--font-geist-mono);
+
+  /* Font sizes with line-height / letter-spacing */
+  --text-display-lg: 64px;
+  --text-display-lg--line-height: 1.1;
+  --text-display-lg--letter-spacing: -0.04em;
+  --text-display-lg--font-weight: 700;
+
+  --text-headline-lg: 32px;
+  --text-headline-lg--line-height: 1.2;
+  --text-headline-lg--letter-spacing: -0.02em;
+  --text-headline-lg--font-weight: 700;
+
+  --text-headline-lg-mobile: 24px;
+  --text-headline-lg-mobile--line-height: 1.2;
+  --text-headline-lg-mobile--letter-spacing: -0.02em;
+  --text-headline-lg-mobile--font-weight: 700;
+
+  --text-body-md: 16px;
+  --text-body-md--line-height: 1.6;
+  --text-body-md--letter-spacing: 0em;
+  --text-body-md--font-weight: 400;
+
+  --text-mono-label: 12px;
+  --text-mono-label--line-height: 1;
+  --text-mono-label--letter-spacing: 0.05em;
+  --text-mono-label--font-weight: 500;
+
+  --text-mono-data: 14px;
+  --text-mono-data--line-height: 1.5;
+  --text-mono-data--letter-spacing: 0em;
+  --text-mono-data--font-weight: 400;
+
+  /* Colors — exact tokens from the tailwind-config script */
+  --color-primary:                    #5eead4;
+  --color-on-primary:                 #003730;
+  --color-primary-container:          #5eead4;
+  --color-on-primary-container:       #00675b;
+  --color-primary-fixed:              #6ef9e2;
+  --color-primary-fixed-dim:          #4ddcc6;
+  --color-on-primary-fixed:           #00201b;
+  --color-on-primary-fixed-variant:   #005047;
+  --color-inverse-primary:            #006b5e;
+
+  --color-secondary:                  #c7c6ca;
+  --color-on-secondary:               #2f3034;
+  --color-secondary-container:        #46464a;
+  --color-on-secondary-container:     #b5b4b9;
+  --color-secondary-fixed:            #e3e2e6;
+  --color-secondary-fixed-dim:        #c7c6ca;
+  --color-on-secondary-fixed:         #1b1b1f;
+  --color-on-secondary-fixed-variant: #46464a;
+
+  --color-tertiary:                   #ffefd7;
+  --color-on-tertiary:                #412d00;
+  --color-tertiary-container:         #ffcd6c;
+  --color-on-tertiary-container:      #775600;
+  --color-tertiary-fixed:             #ffdea5;
+  --color-tertiary-fixed-dim:         #f0bf60;
+  --color-on-tertiary-fixed:          #261900;
+  --color-on-tertiary-fixed-variant:  #5d4200;
+
+  --color-error:                      #ffb4ab;
+  --color-on-error:                   #690005;
+  --color-error-container:            #93000a;
+  --color-on-error-container:         #ffdad6;
+
+  --color-surface:                    #121315;
+  --color-surface-dim:                #121315;
+  --color-surface-bright:             #38393b;
+  --color-surface-container-lowest:   #0d0e10;
+  --color-surface-container-low:      #1b1c1e;
+  --color-surface-container:          #1f2022;
+  --color-surface-container-high:     #292a2c;
+  --color-surface-container-highest:  #343537;
+  --color-surface-variant:            #343537;
+  --color-surface-tint:               #4ddcc6;
+  --color-on-surface:                 #e3e2e5;
+  --color-on-surface-variant:         #bbcac5;
+
+  --color-background:                 #0A0B0D;
+  --color-on-background:              #e3e2e5;
+
+  --color-outline:                    #859490;
+  --color-outline-variant:            #3c4946;
+  --color-inverse-surface:            #e3e2e5;
+  --color-inverse-on-surface:         #303033;
+
+  /* Semantic design tokens */
+  --color-text-primary:               #F2F3F5;
+  --color-text-secondary:             #A6A9B1;
+  --color-text-tertiary:              #6B6E76;
+  --color-bg-surface:                 #131417;
+  --color-bg-surface-hover:           #1B1D21;
+  --color-border-hairline:            #26282E;
+  --color-accent-dim:                 rgba(94, 234, 212, 0.2);
+
+  /* Border radius */
+  --radius-DEFAULT: 0.25rem;
+  --radius-sm:      0.25rem;
+  --radius-lg:      0.5rem;
+  --radius-xl:      0.75rem;
+  --radius-2xl:     1rem;
+  --radius-full:    9999px;
+
+  /* Spacing tokens */
+  --spacing-unit:           4px;
+  --spacing-gutter:         24px;
+  --spacing-margin-mobile:  16px;
+  --spacing-margin-desktop: 64px;
+  --spacing-max-width:      1200px;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+/* ─── Global base styles ────────────────────────────────────────────────────── */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Responsive section padding helper */
+.section-pad {
+  padding-left: var(--spacing-margin-mobile);
+  padding-right: var(--spacing-margin-mobile);
+  max-width: var(--spacing-max-width);
+  margin-left: auto;
+  margin-right: auto;
+}
+@media (min-width: 768px) {
+  .section-pad {
+    padding-left: var(--spacing-margin-desktop);
+    padding-right: var(--spacing-margin-desktop);
   }
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background-color: var(--color-background);
+  color: var(--color-text-primary);
+  font-family: var(--font-geist-sans), sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+::selection {
+  background-color: var(--color-primary-container);
+  color: var(--color-on-primary-container);
+}
+
+/* ─── Custom animations ─────────────────────────────────────────────────────── */
+.dot-matrix-bg {
+  background-image: radial-gradient(rgba(94, 234, 212, 0.05) 1px, transparent 1px);
+  background-size: 20px 20px;
+}
+
+@keyframes pulse-dot {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50%       { opacity: 0.5; transform: scale(0.8); }
+}
+.animate-pulse-dot {
+  animation: pulse-dot 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+@keyframes fade-in-up {
+  from { opacity: 0; transform: translateY(15px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.animate-fade-in-up {
+  animation: fade-in-up 0.4s ease-out forwards;
+}
+.delay-100 { animation-delay: 0.1s; }
+.delay-200 { animation-delay: 0.2s; }
+.delay-300 { animation-delay: 0.3s; }
+.delay-400 { animation-delay: 0.4s; }
+
+@keyframes cursor-blink {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0; }
+}
+.animate-cursor-blink {
+  animation: cursor-blink 1s step-end infinite;
+}
+
+@keyframes drift {
+  from { background-position: 0 0; }
+  to   { background-position: -40px -40px; }
+}
+.animate-drift {
+  animation: drift 20s linear infinite;
+}
+
+/* ─── Utility classes ───────────────────────────────────────────────────────── */
+.hover-border-accent:hover {
+  border-color: rgba(94, 234, 212, 0.2);
+}
+
+/* Scroll-reveal — driven by IntersectionObserver via useScrollReveal hook */
+.reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+.reveal.active {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Material Symbols sizing helper */
+.material-symbols-outlined {
+  font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 20;
 }
