@@ -27,11 +27,11 @@ export default function ExperienceEntry({
 }: ExperienceEntryProps) {
   return (
     <div className="relative">
-      {/* Timeline dot */}
+      {/* Timeline dot — top-0 so dot center (6px = h-3/2) aligns with the line */}
       <span
-        className="absolute top-1 w-3 h-3 rounded-full border-2"
+        className="absolute top-0 w-3 h-3 rounded-full border-2"
         style={{
-          left: "-29px",
+          left: "-30px",
           backgroundColor: "var(--color-background)",
           borderColor: isActive
             ? "var(--color-primary)"

@@ -258,50 +258,58 @@ export default function ProjectCard({
         </p>
       </div>
 
-      <div className="flex justify-between items-end mt-4">
-        <div className="flex flex-wrap gap-2">
-          {tags.map((tag) => (
-            <span
-              key={tag}
-              className="px-3 py-1 border uppercase rounded-full text-[10px]"
+      {/* Tags */}
+      <div className="flex flex-wrap gap-2 mt-4">
+        {tags.map((tag) => (
+          <span
+            key={tag}
+            className="px-3 py-1 border uppercase rounded-full text-[10px]"
+            style={{
+              fontFamily: "var(--font-geist-mono)",
+              fontWeight: 500,
+              letterSpacing: "0.05em",
+              borderColor: "var(--color-border-hairline)",
+              color: "var(--color-text-tertiary)",
+            }}
+          >
+            {tag}
+          </span>
+        ))}
+      </div>
+
+      {/* Links — full-width row below tags, label + arrow */}
+      {resolvedLinks.length > 0 && (
+        <div className="flex flex-wrap gap-4 mt-5 pt-4 border-t" style={{ borderColor: "var(--color-border-hairline)" }}>
+          {resolvedLinks.map((l) => (
+            <Link
+              key={l.label}
+              href={l.href}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-1.5 uppercase text-[11px] transition-colors duration-200"
               style={{
                 fontFamily: "var(--font-geist-mono)",
                 fontWeight: 500,
                 letterSpacing: "0.05em",
-                borderColor: "var(--color-border-hairline)",
-                color: "var(--color-text-tertiary)",
+                color: "var(--color-primary)",
               }}
+              onMouseEnter={(e) =>
+                ((e.currentTarget as HTMLElement).style.color =
+                  "var(--color-primary-fixed-dim)")
+              }
+              onMouseLeave={(e) =>
+                ((e.currentTarget as HTMLElement).style.color =
+                  "var(--color-primary)")
+              }
             >
-              {tag}
-            </span>
+              {l.label}
+              <span className="material-symbols-outlined text-[14px]">
+                arrow_outward
+              </span>
+            </Link>
           ))}
         </div>
-        {resolvedLinks.length > 0 && (
-          <div className="flex gap-2 ml-4">
-            {resolvedLinks.map((l) => (
-              <Link
-                key={l.label}
-                href={l.href}
-                target="_blank"
-                rel="noopener noreferrer"
-                title={l.label}
-                className="transition-colors duration-200"
-                style={{ color: "var(--color-text-secondary)" }}
-                onMouseEnter={(e) =>
-                  ((e.currentTarget as HTMLElement).style.color =
-                    "var(--color-primary)")
-                }
-                onMouseLeave={(e) =>
-                  ((e.currentTarget as HTMLElement).style.color =
-                    "var(--color-text-secondary)")
-                }
-              >
-                <span className="material-symbols-outlined">arrow_outward</span>
-              </Link>
-            ))}
-          </div>
-        )}
-      </div>
+      )}
     </div>
   );
 }

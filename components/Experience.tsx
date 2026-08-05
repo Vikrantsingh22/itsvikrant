@@ -61,19 +61,33 @@ export default function Experience() {
       <SectionHeading sectionId="experience" label="Experience" />
 
       {/* Timeline */}
-      <div
-        className="relative pl-6 md:pl-8 border-l space-y-16"
-        style={{ borderColor: "var(--color-border-hairline)" }}
-      >
-        {mainExperiences.map((exp) => (
-          <ExperienceEntry key={exp.title} {...exp} />
-        ))}
+      {/*
+        The line is a dedicated absolutely-positioned element so it starts
+        exactly at the center of the first dot (6px = half of 12px dot),
+        rather than at the container top (which border-l would do).
+      */}
+      <div className="relative pl-6 md:pl-8">
+        {/* Vertical connector line — starts at first-dot center */}
+        <div
+          className="absolute left-0 bottom-0 w-px"
+          style={{
+            top: "6px",
+            backgroundColor: "var(--color-border-hairline)",
+          }}
+          aria-hidden="true"
+        />
 
-        {/* Expandable older experience */}
-        {showMore &&
-          moreExperiences.map((exp) => (
+        <div className="space-y-16">
+          {mainExperiences.map((exp) => (
             <ExperienceEntry key={exp.title} {...exp} />
           ))}
+
+          {/* Expandable older experience */}
+          {showMore &&
+            moreExperiences.map((exp) => (
+              <ExperienceEntry key={exp.title} {...exp} />
+            ))}
+        </div>
       </div>
 
       {/* Toggle button */}

@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { useEffect, useState } from "react";
-import { ActiveSectionContext } from "@/context/ActiveSectionContext";
+import { useActiveSection } from "@/context/ActiveSectionContext";
 
 const navLinks = [
   { href: "#home",        label: "Home" },
@@ -15,28 +15,8 @@ const navLinks = [
 
 export default function Nav() {
   const [menuOpen, setMenuOpen] = useState(false);
-  const [activeSection, setActiveSection] = useState("home");
-
-  // Track active section via IntersectionObserver — single source of truth
-  useEffect(() => {
-    const sectionIds = navLinks.map((l) => l.href.replace("#", ""));
-    const observers: IntersectionObserver[] = [];
-
-    sectionIds.forEach((id) => {
-      const el = document.getElementById(id);
-      if (!el) return;
-      const obs = new IntersectionObserver(
-        ([entry]) => {
-          if (entry.isIntersecting) setActiveSection(id);
-        },
-        { rootMargin: "-40% 0px -55% 0px" }
-      );
-      obs.observe(el);
-      observers.push(obs);
-    });
-
-    return () => observers.forEach((o) => o.disconnect());
-  }, []);
+  // Consume context provided by ActiveSectionProvider in page.tsx
+  const activeSection = useActiveSection();
 
   // Lock body scroll when menu is open
   useEffect(() => {
@@ -47,8 +27,7 @@ export default function Nav() {
   const closeMenu = () => setMenuOpen(false);
 
   return (
-    // Provide active section to the entire component tree
-    <ActiveSectionContext.Provider value={activeSection}>
+    <>
       <nav
         className="fixed top-0 w-full z-50 border-b"
         style={{
@@ -244,6 +223,6 @@ export default function Nav() {
           RESUME ↓
         </Link>
       </div>
-    </ActiveSectionContext.Provider>
+    </>
   );
 }

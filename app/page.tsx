@@ -1,3 +1,4 @@
+import ActiveSectionProvider from "@/components/ActiveSectionProvider";
 import Nav from "@/components/Nav";
 import Hero from "@/components/Hero";
 import ImpactStrip from "@/components/ImpactStrip";
@@ -10,7 +11,7 @@ import Footer from "@/components/Footer";
 
 export default function Home() {
   return (
-    <>
+    <ActiveSectionProvider>
       <Nav />
       <main className="flex-grow pt-24 md:pt-32 pb-16">
         <Hero />
@@ -22,6 +23,6 @@ export default function Home() {
         <Recognition />
       </main>
       <Footer />
-    </>
+    </ActiveSectionProvider>
   );
 }
