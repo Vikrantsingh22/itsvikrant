@@ -17,6 +17,9 @@ const jetbrainsMono = JetBrains_Mono({
 
 export const metadata: Metadata = {
   title: "Vikrant Singh | VS.",
+  icons: {
+    icon: "/icon.png"
+  },
   description:
     "Backend engineer building low-latency, high-throughput systems — from real-time trading infra to fintech APIs handling 50,000+ requests a day.",
   keywords: [
