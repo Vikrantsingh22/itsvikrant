@@ -8,7 +8,8 @@ import { useScrollReveal } from "@/hooks/useScrollReveal";
 const mainExperiences = [
   {
     title: "SDE Intern → Senior Associate SDE",
-    company: "@ Radix, Mumbai",
+    company: "Radix, Mumbai",
+    companyLogo: "/images/experience/radix.png",
     dateRange: "Jan 2026 – Present",
     bullets: [
       "Reduced operational costs 3x across 11 TLDs (.online, .tech, .store, .fun, .host, .space, .press, .pw, .site, .uno, .website) by architecting internal automation in Python and Node.js that replaced 3 external third-party services covering domain governance, abuse-handling, and registrar operations.",
@@ -22,7 +23,8 @@ const mainExperiences = [
   },
   {
     title: "Backend Developer Intern",
-    company: "@ PayRam — Self-Hosted Stablecoin Payments, Remote",
+    company: "PayRam — Self-Hosted Stablecoin Payments, Remote",
+    companyLogo: "/images/experience/payram.jpg",
     dateRange: "Oct 2025 – Feb 2026",
     bullets: [
       "Shipped 2 core production features for a multi-chain payment server, owning the full lifecycle from system design through deployment and debugging.",
@@ -36,7 +38,8 @@ const mainExperiences = [
 const moreExperiences = [
   {
     title: "Backend Developer Intern",
-    company: "@ CATOFF Gaming LLC, Bangalore",
+    company: "CATOFF Gaming LLC, Bangalore",
+    companyLogo: "/images/experience/catoff.jpg",
     dateRange: "Jun 2024 – Oct 2025",
     bullets: [
       "Drove real-time game-state sync for 3,000+ concurrent users via REST and webhook connectors in NestJS, integrating the Riot Games SDK and social media APIs.",
@@ -105,12 +108,12 @@ export default function Experience() {
             padding: 0,
           }}
           onMouseEnter={(e) =>
-            ((e.currentTarget as HTMLElement).style.color =
-              "var(--color-primary)")
+          ((e.currentTarget as HTMLElement).style.color =
+            "var(--color-primary)")
           }
           onMouseLeave={(e) =>
-            ((e.currentTarget as HTMLElement).style.color =
-              "var(--color-text-tertiary)")
+          ((e.currentTarget as HTMLElement).style.color =
+            "var(--color-text-tertiary)")
           }
         >
           {showMore ? (

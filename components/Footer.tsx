@@ -36,7 +36,7 @@ export default function Footer() {
 
       {/* Get in touch CTA */}
       <Link
-        href="mailto:vikrantsingh202004@gmail.com"
+        href="https://calendly.com/vikrantsingh202004/30min"
         className="inline-flex items-center justify-center uppercase tracking-wider text-lg transition-colors duration-200 px-8 py-5"
         style={{
           fontFamily: "var(--font-geist-mono)",
@@ -45,12 +45,12 @@ export default function Footer() {
           color: "var(--color-on-primary)",
         }}
         onMouseEnter={(e) =>
-          ((e.currentTarget as HTMLElement).style.backgroundColor =
-            "var(--color-primary-fixed-dim)")
+        ((e.currentTarget as HTMLElement).style.backgroundColor =
+          "var(--color-primary-fixed-dim)")
         }
         onMouseLeave={(e) =>
-          ((e.currentTarget as HTMLElement).style.backgroundColor =
-            "var(--color-primary)")
+        ((e.currentTarget as HTMLElement).style.backgroundColor =
+          "var(--color-primary)")
         }
       >
         Get in touch{" "}
@@ -93,12 +93,12 @@ export default function Footer() {
                   color: "var(--color-text-tertiary)",
                 }}
                 onMouseEnter={(e) =>
-                  ((e.currentTarget as HTMLElement).style.color =
-                    "var(--color-primary)")
+                ((e.currentTarget as HTMLElement).style.color =
+                  "var(--color-primary)")
                 }
                 onMouseLeave={(e) =>
-                  ((e.currentTarget as HTMLElement).style.color =
-                    "var(--color-text-tertiary)")
+                ((e.currentTarget as HTMLElement).style.color =
+                  "var(--color-text-tertiary)")
                 }
               >
                 {link.label}
@@ -117,7 +117,7 @@ export default function Footer() {
             color: "var(--color-text-tertiary)",
           }}
         >
-          © 2026 VIKRANT SINGH. ENGINEERED FOR PERFORMANCE.
+          © 2026 VIKRANT SINGH.
         </div>
       </div>
     </footer>

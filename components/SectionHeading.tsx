@@ -27,11 +27,10 @@ export default function SectionHeading({ sectionId, label }: SectionHeadingProps
       }}
     >
       <span
-        className="h-px transition-all duration-500 ease-out"
-        style={{
-          backgroundColor: "var(--color-primary)",
-          width: isActive ? "48px" : "32px",
-        }}
+        className={`h-px transition-[width] duration-500 ease-out ${
+          isActive ? "w-[48px] md:w-[68px]" : "w-8"
+        }`}
+        style={{ backgroundColor: "var(--color-primary)" }}
       />
       {label}
     </h2>
