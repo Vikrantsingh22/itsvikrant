@@ -11,18 +11,21 @@ const recognitions = [
     placement: "2nd Place",
     year: "2024",
     note: "AI-driven Valorant analytics engine for predictive stats-based betting",
+    image: "/images/recognition/superteam.jpg",
   },
   {
     name: "BNB Chain Hackathon",
     placement: "2nd Place",
     year: "2025",
     note: "Built BNBBrawl — real-time esports wagering with on-chain payouts",
+    image: "/images/recognition/bnb.jpg",
   },
   {
     name: "DSCVR Hackathon",
     placement: "2nd Place",
     year: "2024",
     note: "Single-click auction platform with Redis and WebSocket connectors",
+    image: "/images/recognition/dscvr.jpg",
   },
 ];
 
@@ -31,12 +34,14 @@ const moreRecognitions = [
     name: "Hackanova 3.0",
     placement: "2nd Runner-Up",
     year: "2024",
+    image: "/images/recognition/hackanova.webp",
   },
   {
     name: "HackX Hackathon",
     placement: "1st Place",
     year: "2023",
     note: "Blockchain-based academic record verification using Ethereum smart contracts",
+    image: "/images/recognition/hackx.webp",
   },
 ];
 

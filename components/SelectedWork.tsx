@@ -10,7 +10,7 @@ const featuredProject = {
   subtitle: "Real-Time Domain Threat Intelligence Platform",
   description:
     "A live system that ingests every SSL certificate issued anywhere on the internet in real time via Certificate Transparency logs, flags domains impersonating known brands, and scores each one through an explainable risk engine. A tiered similarity-matching engine replaces naive string comparison, cutting false positives to near-zero across 30+ monitored brands including Indian banks and fintechs. Parallel enrichment workers pull DNS, WHOIS, ASN, and content signals without stalling the pipeline — flagging malicious domains in under 30 seconds, the same threat intel registrar trust & safety teams rely on.",
-  image: "https://opengraph.githubassets.com/1/Vikrantsingh22/CertWatch",
+  image: "/images/projects/featuredproject_1.png",
   imageAlt: "CertWatch — Real-Time Domain Threat Intelligence",
   tags: [
     "Node.js", "NestJS", "TypeScript", "BullMQ", "Redis",
@@ -28,7 +28,7 @@ const secondaryProjects = [
     subtitle: "Real-Time Esports Wagering on BNB Chain",
     description:
       "Built in 16 hours during the BNB Chain Hackathon: a live wagering platform for Valorant Champions Tour matches. Connect a wallet, place on-chain bets against real-time odds, and receive instant payouts through a Solidity escrow contract the moment a match ends. Placed 2nd.",
-    image: "https://opengraph.githubassets.com/1/Vikrantsingh22/BNBBrawl",
+    image: "/images/projects/bnbrawl.png",
     imageAlt: "BNBBrawl — Esports wagering on BNB Chain",
     tags: ["React.js", "Express.js", "TypeScript", "Solidity", "BNB Smart Chain", "Ethers.js", "Supabase"],
     links: [
@@ -41,7 +41,7 @@ const secondaryProjects = [
     subtitle: "On-Chain Exploit & Threat Tracker",
     description:
       "A live dashboard tracking Solana exploits and failed transactions in real time, combining Dune Analytics queries with a Puppeteer-scraped historical exploit database. Surfaces fund-loss analytics, exploit timelines, high-frequency-signer detection, and a filterable resource library for security researchers.",
-    image: "https://opengraph.githubassets.com/1/Vikrantsingh22/solisburning",
+    image: "/images/projects/solisburning.png",
     imageAlt: "Solana Security Dashboard",
     tags: ["Next.js", "TypeScript", "Puppeteer", "Docker", "Dune Analytics API", "Supabase/PostgreSQL"],
     links: [
@@ -87,12 +87,12 @@ export default function SelectedWork() {
               color: "var(--color-text-tertiary)",
             }}
             onMouseEnter={(e) =>
-              ((e.currentTarget as HTMLElement).style.color =
-                "var(--color-primary)")
+            ((e.currentTarget as HTMLElement).style.color =
+              "var(--color-primary)")
             }
             onMouseLeave={(e) =>
-              ((e.currentTarget as HTMLElement).style.color =
-                "var(--color-text-tertiary)")
+            ((e.currentTarget as HTMLElement).style.color =
+              "var(--color-text-tertiary)")
             }
           >
             View more on GitHub{" "}

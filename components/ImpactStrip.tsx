@@ -16,7 +16,7 @@ export default function ImpactStrip() {
     <section className="mb-24">
       <div className="section-pad">
         <div
-          className="border-y py-12"
+          className="border-y py-12 px-6"
           style={{
             backgroundColor: "var(--color-surface)",
             borderColor: "var(--color-border-hairline)",

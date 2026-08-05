@@ -111,7 +111,7 @@ export default function Profile() {
         style={{ borderColor: "var(--color-border-hairline)" }}
       >
         <div
-          className="uppercase mb-2 text-[12px] tracking-widest"
+          className="uppercase mb-5 text-[12px] tracking-widest"
           style={{
             fontFamily: "var(--font-geist-mono)",
             fontWeight: 500,
@@ -121,15 +121,79 @@ export default function Profile() {
         >
           Education
         </div>
+
+        {/* Education card */}
         <div
+          className="border rounded-xl p-6 flex flex-col sm:flex-row gap-5 items-start transition-colors duration-200"
           style={{
-            fontFamily: "var(--font-geist-sans)",
-            fontSize: "16px",
-            lineHeight: 1.6,
-            color: "var(--color-text-secondary)",
+            backgroundColor: "var(--color-surface)",
+            borderColor: "var(--color-border-hairline)",
           }}
+          onMouseEnter={(e) =>
+            ((e.currentTarget as HTMLElement).style.borderColor =
+              "var(--color-primary)")
+          }
+          onMouseLeave={(e) =>
+            ((e.currentTarget as HTMLElement).style.borderColor =
+              "var(--color-border-hairline)")
+          }
         >
-          B.E. Computer Engineering, Thakur College of Engineering &amp; Technology, Mumbai · Graduated 2026 · CGPA 9.67/10
+          {/* Institute logo */}
+          <div
+            className="shrink-0 border rounded-lg flex items-center justify-center overflow-hidden"
+            style={{
+              width: "64px",
+              height: "64px",
+              borderColor: "var(--color-border-hairline)",
+              backgroundColor: "var(--color-background)",
+            }}
+          >
+            <Image
+              src="/images/experience/tectopensource.png"
+              alt="Thakur College of Engineering & Technology"
+              width={64}
+              height={64}
+              className="object-contain p-1"
+            />
+          </div>
+
+          {/* Details */}
+          <div className="flex flex-col gap-1">
+            <span
+              style={{
+                fontFamily: "var(--font-geist-sans)",
+                fontSize: "17px",
+                fontWeight: 700,
+                lineHeight: 1.3,
+                letterSpacing: "-0.01em",
+                color: "var(--color-text-primary)",
+              }}
+            >
+              B.E. Computer Engineering
+            </span>
+            <span
+              style={{
+                fontFamily: "var(--font-geist-sans)",
+                fontSize: "14px",
+                lineHeight: 1.5,
+                color: "var(--color-text-secondary)",
+              }}
+            >
+              Thakur College of Engineering &amp; Technology, Mumbai
+            </span>
+            <div
+              className="flex flex-wrap gap-3 mt-1 uppercase text-[11px]"
+              style={{
+                fontFamily: "var(--font-geist-mono)",
+                fontWeight: 500,
+                letterSpacing: "0.05em",
+              }}
+            >
+              <span style={{ color: "var(--color-primary)" }}>CGPA 9.67 / 10</span>
+              <span style={{ color: "var(--color-text-tertiary)" }}>·</span>
+              <span style={{ color: "var(--color-text-tertiary)" }}>Graduated 2026</span>
+            </div>
+          </div>
         </div>
       </div>
     </section>

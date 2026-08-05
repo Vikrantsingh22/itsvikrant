@@ -73,14 +73,14 @@ export default function ProjectCard({
           {/* Project image */}
           <div
             className="border overflow-hidden"
-            style={{ borderColor: "var(--color-border-hairline)" }}
+            style={{ borderColor: "var(--color-border-hairline)", backgroundColor: "var(--color-surface)" }}
           >
             <div className="relative w-full" style={{ aspectRatio: "16/9" }}>
               <Image
                 src={image}
                 alt={imageAlt}
                 fill
-                className="object-cover"
+                className="object-contain"
                 sizes="(max-width: 768px) 100vw, 80vw"
               />
             </div>
@@ -204,14 +204,14 @@ export default function ProjectCard({
         {/* Image */}
         <div
           className="mb-6 border overflow-hidden"
-          style={{ borderColor: "var(--color-border-hairline)" }}
+          style={{ borderColor: "var(--color-border-hairline)", backgroundColor: "var(--color-surface)" }}
         >
           <div className="relative w-full" style={{ aspectRatio: "16/9" }}>
             <Image
               src={image}
               alt={imageAlt}
               fill
-              className="object-cover"
+              className="object-contain"
               sizes="(max-width: 768px) 100vw, 50vw"
             />
           </div>

@@ -16,8 +16,8 @@ export default function Home() {
       <main className="flex-grow pt-24 md:pt-32 pb-16">
         <Hero />
         <ImpactStrip />
-        <SelectedWork />
         <Experience />
+        <SelectedWork />
         <Profile />
         <Skills />
         <Recognition />
