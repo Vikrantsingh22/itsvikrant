@@ -6,10 +6,10 @@ import SectionHeading from "./SectionHeading";
 import { useScrollReveal } from "@/hooks/useScrollReveal";
 
 const socialLinks = [
-  { href: "mailto:vikrantsingh202004@gmail.com", label: "Email",    icon: "mail" },
+  { href: "mailto:vikrantsingh202004@gmail.com", label: "Email", icon: "mail" },
   { href: "https://linkedin.com/in/vikrant-singh-196301210", label: "LinkedIn", icon: "link" },
-  { href: "https://github.com/Vikrantsingh22", label: "GitHub",   icon: "code" },
-  { href: "https://itsvikrant.tech",            label: "Website",  icon: "language" },
+  { href: "https://github.com/Vikrantsingh22", label: "GitHub", icon: "code" },
+  { href: "https://itsvikrant.tech", label: "Website", icon: "language" },
 ];
 
 export default function Profile() {
@@ -87,12 +87,12 @@ export default function Profile() {
                   color: "var(--color-text-secondary)",
                 }}
                 onMouseEnter={(e) =>
-                  ((e.currentTarget as HTMLElement).style.color =
-                    "var(--color-primary)")
+                ((e.currentTarget as HTMLElement).style.color =
+                  "var(--color-primary)")
                 }
                 onMouseLeave={(e) =>
-                  ((e.currentTarget as HTMLElement).style.color =
-                    "var(--color-text-secondary)")
+                ((e.currentTarget as HTMLElement).style.color =
+                  "var(--color-text-secondary)")
                 }
               >
                 <span className="material-symbols-outlined text-[16px]">
@@ -130,12 +130,12 @@ export default function Profile() {
             borderColor: "var(--color-border-hairline)",
           }}
           onMouseEnter={(e) =>
-            ((e.currentTarget as HTMLElement).style.borderColor =
-              "var(--color-primary)")
+          ((e.currentTarget as HTMLElement).style.borderColor =
+            "var(--color-primary)")
           }
           onMouseLeave={(e) =>
-            ((e.currentTarget as HTMLElement).style.borderColor =
-              "var(--color-border-hairline)")
+          ((e.currentTarget as HTMLElement).style.borderColor =
+            "var(--color-border-hairline)")
           }
         >
           {/* Institute logo */}
@@ -145,12 +145,13 @@ export default function Profile() {
               width: "64px",
               height: "64px",
               borderColor: "var(--color-border-hairline)",
-              backgroundColor: "var(--color-background)",
+              // background color will be white
+              backgroundColor: "#ffffff"
             }}
           >
             <Image
-              src="/images/experience/tectopensource.png"
-              alt="Thakur College of Engineering & Technology"
+              src="/images/education/UoM.png"
+              alt="University of Mumbai"
               width={64}
               height={64}
               className="object-contain p-1"
@@ -179,7 +180,7 @@ export default function Profile() {
                 color: "var(--color-text-secondary)",
               }}
             >
-              Thakur College of Engineering &amp; Technology, Mumbai
+              University of Mumbai
             </span>
             <div
               className="flex flex-wrap gap-3 mt-1 uppercase text-[11px]"

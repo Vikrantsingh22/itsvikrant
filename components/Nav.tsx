@@ -5,12 +5,12 @@ import { useEffect, useState } from "react";
 import { useActiveSection } from "@/context/ActiveSectionContext";
 
 const navLinks = [
-  { href: "#home",        label: "Home" },
-  { href: "#work",        label: "Work" },
-  { href: "#experience",  label: "Experience" },
-  { href: "#profile",     label: "Profile" },
+  { href: "#home", label: "Home" },
+  { href: "#work", label: "Work" },
+  { href: "#experience", label: "Experience" },
+  { href: "#profile", label: "Profile" },
   { href: "#recognition", label: "Recognition" },
-  { href: "#contact",     label: "Contact" },
+  { href: "#contact", label: "Contact" },
 ];
 
 export default function Nav() {
@@ -73,9 +73,9 @@ export default function Nav() {
                       (e.currentTarget.style.color = "var(--color-primary)")
                     }
                     onMouseLeave={(e) =>
-                      (e.currentTarget.style.color = isActive
-                        ? "var(--color-primary)"
-                        : "var(--color-text-secondary)")
+                    (e.currentTarget.style.color = isActive
+                      ? "var(--color-primary)"
+                      : "var(--color-text-secondary)")
                     }
                   >
                     {link.label}
@@ -87,7 +87,7 @@ export default function Nav() {
 
           {/* Resume CTA — desktop */}
           <Link
-            href="#"
+            href="https://drive.google.com/file/d/1QWA8Qe6cS5ls-TWUloY0zEAuxCZc4shR/view?usp=drive_link"
             className="hidden md:inline-block uppercase tracking-wider text-[12px] border px-4 py-2 transition-colors duration-200"
             style={{
               fontFamily: "var(--font-geist-mono)",
@@ -96,12 +96,12 @@ export default function Nav() {
               borderColor: "var(--color-primary)",
             }}
             onMouseEnter={(e) =>
-              ((e.currentTarget as HTMLAnchorElement).style.backgroundColor =
-                "var(--color-accent-dim)")
+            ((e.currentTarget as HTMLAnchorElement).style.backgroundColor =
+              "var(--color-accent-dim)")
             }
             onMouseLeave={(e) =>
-              ((e.currentTarget as HTMLAnchorElement).style.backgroundColor =
-                "transparent")
+            ((e.currentTarget as HTMLAnchorElement).style.backgroundColor =
+              "transparent")
             }
           >
             RESUME
@@ -210,7 +210,7 @@ export default function Nav() {
         </ul>
 
         <Link
-          href="#"
+          href="https://drive.google.com/file/d/1QWA8Qe6cS5ls-TWUloY0zEAuxCZc4shR/view?usp=drive_link"
           onClick={closeMenu}
           className="uppercase tracking-wider text-[13px] border text-center py-4 transition-colors duration-200"
           style={{

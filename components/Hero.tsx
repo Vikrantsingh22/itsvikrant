@@ -130,18 +130,18 @@ export default function Hero() {
               color: "var(--color-on-primary)",
             }}
             onMouseEnter={(e) =>
-              ((e.currentTarget as HTMLElement).style.backgroundColor =
-                "var(--color-primary-fixed-dim)")
+            ((e.currentTarget as HTMLElement).style.backgroundColor =
+              "var(--color-primary-fixed-dim)")
             }
             onMouseLeave={(e) =>
-              ((e.currentTarget as HTMLElement).style.backgroundColor =
-                "var(--color-primary)")
+            ((e.currentTarget as HTMLElement).style.backgroundColor =
+              "var(--color-primary)")
             }
           >
             View Selected Work
           </Link>
           <Link
-            href="#"
+            href="https://drive.google.com/file/d/1QWA8Qe6cS5ls-TWUloY0zEAuxCZc4shR/view?usp=drive_link?usp=sharing"
             className="hover-border-accent inline-flex items-center justify-center border uppercase tracking-wider text-[12px] px-6 py-4 transition-colors duration-200"
             style={{
               fontFamily: "var(--font-geist-mono)",
@@ -150,12 +150,12 @@ export default function Hero() {
               borderColor: "var(--color-border-hairline)",
             }}
             onMouseEnter={(e) =>
-              ((e.currentTarget as HTMLElement).style.backgroundColor =
-                "var(--color-accent-dim)")
+            ((e.currentTarget as HTMLElement).style.backgroundColor =
+              "var(--color-accent-dim)")
             }
             onMouseLeave={(e) =>
-              ((e.currentTarget as HTMLElement).style.backgroundColor =
-                "transparent")
+            ((e.currentTarget as HTMLElement).style.backgroundColor =
+              "transparent")
             }
           >
             Resume{" "}
