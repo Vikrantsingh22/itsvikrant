@@ -7,7 +7,7 @@ import { useScrollReveal } from "@/hooks/useScrollReveal";
 
 const socialLinks = [
   { href: "mailto:vikrantsingh202004@gmail.com", label: "Email", icon: "mail" },
-  { href: "https://linkedin.com/in/vikrant-singh-196301210", label: "LinkedIn", icon: "link" },
+  { href: "https://linkedin.com/in/itsvikrants/", label: "LinkedIn", icon: "link" },
   { href: "https://github.com/Vikrantsingh22", label: "GitHub", icon: "code" },
   { href: "https://itsvikrant.tech", label: "Website", icon: "language" },
 ];

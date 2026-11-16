@@ -4,7 +4,7 @@ import Link from "next/link";
 
 const footerLinks = [
   { href: "mailto:vikrantsingh202004@gmail.com", label: "Email" },
-  { href: "https://linkedin.com/in/vikrant-singh-196301210", label: "LinkedIn", external: true },
+  { href: "https://linkedin.com/in/itsvikrants/", label: "LinkedIn", external: true },
   { href: "https://github.com/Vikrantsingh22", label: "GitHub", external: true },
   { href: "https://itsvikrant.tech", label: "Site", external: true },
 ];
